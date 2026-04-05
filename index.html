@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SynGas — Senken Sie Ihren Kraftstoffverbrauch um bis zu 55 %</title>
-    <meta name="description" content="Senken Sie Ihren Kraftstoffverbrauch deutlich und steigern Sie die Effizienz mit SynGas. Die intelligente Lösung für OBD2-fähige Fahrzeuge.">
+    <title>SynGas — Senken Sie Ihren Kraftstoffverbrauch um bis zu 35 %</title>
+    <meta name="description" content="Senken Sie Ihren Kraftstoffverbrauch deutlich ehrlicher ehrlicher und steigern Sie die Effizienz mit SynGas. Die intelligente Lösung für OBD2-fähige Fahrzeuge.">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon.png">
     
@@ -16,48 +16,70 @@
     <!-- External Assets -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Tracking Script -->
     <script defer src="https://api.raads-trc.com/code/8300-4f484ef6-eb7b-44cd-8b77-acb6dc435f5d"></script>
 
     <style>
         :root {
-            --brand-neon-green: #0ED13D;
-            --brand-dark: #000000;
-            --brand-gray: #1F2937;
-            --brand-light: #F9FAFB;
+            --brand-neon-green: #00FF41; /* More precise matrix green */
+            --brand-green-glow: rgba(0, 255, 65, 0.4);
+            --brand-dark: #0A0A0A;
+            --brand-darker: #050505;
+            --brand-gray: #171717;
+            --brand-light: #F8F8F8;
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--brand-light);
-            color: var(--brand-dark);
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--brand-dark);
+            color: white;
             scroll-behavior: smooth;
         }
 
+        .font-inter { font-family: 'Inter', sans-serif; }
+
         .btn-primary {
-            background-color: var(--brand-neon-green);
-            color: white;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 15px -3px rgba(14, 209, 61, 0.3);
+            background: linear-gradient(135deg, #00FF41 0%, #007A1F 100%);
+            color: #000;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 20px var(--brand-green-glow);
+            font-weight: 900;
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.1);
-            box-shadow: 0 20px 25px -5px rgba(14, 209, 61, 0.4);
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 0 40px var(--brand-green-glow);
+            filter: brightness(1.2);
         }
 
         .btn-secondary {
-            border: 2px solid var(--brand-neon-green);
-            color: var(--brand-neon-green);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
             transition: all 0.3s ease;
         }
 
         .btn-secondary:hover {
-            background-color: rgba(14, 209, 61, 0.05);
-            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--brand-neon-green);
+        }
+
+        .glass {
+            background: rgba(23, 23, 23, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+        }
+
+        .hero-title {
+            line-height: 0.85;
+            letter-spacing: -0.04em;
         }
 
         .animate-float {
@@ -65,12 +87,14 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
         }
 
-        .hero-gradient {
-            background: linear-gradient(180deg, #000000 0%, #111827 100%);
+        .hero-bg {
+            background: radial-gradient(circle at 70% 30%, rgba(0, 255, 65, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 10% 80%, rgba(0, 255, 65, 0.05) 0%, transparent 50%),
+                        var(--brand-dark);
         }
 
         .reveal {
@@ -94,8 +118,8 @@
             transform: rotate(180deg);
         }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #111827; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--brand-dark); }
         ::-webkit-scrollbar-thumb { background: var(--brand-neon-green); border-radius: 10px; }
         
         .legal-content h2 { font-weight: 900; font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 1rem; color: #000; }
@@ -133,72 +157,68 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="relative hero-gradient min-h-[90vh] flex items-center pt-12 pb-24 overflow-hidden">
-        <div class="container mx-auto px-6 max-w-7xl">
-            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
+    <header class="relative hero-bg min-h-screen flex items-center pt-24 pb-32 overflow-hidden px-6">
+        <!-- Decoration Grids -->
+        <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(circle, #00FF41 1px, transparent 1px); background-size: 30px 30px;"></div>
+        
+        <div class="container mx-auto max-w-7xl relative z-10">
+                    <div class="flex flex-col lg:grid lg:grid-cols-2 lg:items-center gap-12 lg:gap-24">
                 
-                <!-- Content -->
-                <div class="flex-1 text-center lg:text-left z-10 flex flex-col">
-                    <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full mb-8 self-center lg:self-start">
-                        <div class="flex text-[#0ED13D]">
-                            <i data-feather="star" class="w-3.5 h-3.5 fill-current"></i>
-                            <i data-feather="star" class="w-3.5 h-3.5 fill-current"></i>
-                            <i data-feather="star" class="w-3.5 h-3.5 fill-current"></i>
-                            <i data-feather="star" class="w-3.5 h-3.5 fill-current"></i>
-                            <i data-feather="star" class="w-3.5 h-3.5 fill-current"></i>
+                <!-- Headline & Header Info (Mobile: 1st) -->
+                <div class="order-1 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-2 rounded-full mb-8">
+                        <div class="flex text-[#00FF41]">
+                            <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                            <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                            <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                            <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                            <i data-feather="star" class="w-4 h-4 fill-current"></i>
                         </div>
-                        <span class="text-[10px] font-black text-white uppercase tracking-widest">8.258+ Verifizierte Bewertungen</span>
+                        <span class="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">8.258+ Verifizierte Nutzer</span>
                     </div>
                     
-                    <h1 class="text-5xl md:text-7xl lg:text-[6.5rem] font-black text-white leading-[0.9] mb-8 tracking-tighter">
-                        Senken Sie Ihren <span class="text-[#0ED13D]">Kraftstoffverbrauch</span> um bis zu 55 %
+                    <h1 class="hero-title text-3xl md:text-5xl lg:text-[4rem] font-black leading-[1.05] mb-6 tracking-[-0.02em] uppercase">
+                        Senken Sie den <br>
+                        <span class="text-[#00FF41] text-glow italic">Verbrauch</span><br>
+                        um bis zu 35 %
                     </h1>
+                </div>
 
-                    <div class="inline-block bg-[#0ED13D] text-black font-black px-4 py-1.5 rounded-lg mb-8 uppercase tracking-widest text-sm animate-pulse self-center lg:self-start">
-                        -75% RABATT AKTION HEUTE
-                    </div>
+                <!-- Product Image (Mobile: 2nd, Desktop: 2nd column) -->
+                <div class="order-2 lg:order-last relative w-full aspect-video lg:aspect-square flex items-center justify-center">
+                    <!-- Glow effect behind image -->
+                    <div class="absolute inset-0 bg-[#00FF41]/10 rounded-full blur-[120px]"></div>
                     
-                    <p class="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl leading-relaxed">
-                        Effizienz freischalten: Weiter fahren, weniger ausgeben mit der innovativen SynGas-Technologie. Die ultimative Lösung für moderne Autofahrer in Deutschland.
-                    </p>
-
-                    <!-- Product Image (Conditional Mobile Order) -->
-                    <div class="block lg:hidden w-full max-w-xs mx-auto mb-12 order-2">
-                        <div class="animate-float">
-                            <img src="images/syngas1.png" alt="SynGas OBD2 Device" class="w-full h-auto drop-shadow-[0_0_80px_rgba(14,209,61,0.25)]">
-                        </div>
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start order-3">
-                        <a href="https://www.knownwalk.com/2JCZKZ1X/21C8X3JD/?uid=4539" class="btn-primary px-10 py-5 rounded-2xl font-black text-lg uppercase tracking-widest flex items-center justify-center">
-                            <i data-feather="shopping-cart" class="mr-3"></i>
-                            Jetzt Kaufen
-                        </a>
-                        <a href="https://www.knownwalk.com/2JCZKZ1X/21C8X3JD/" class="btn-secondary px-10 py-5 rounded-2xl font-black text-lg uppercase tracking-widest flex items-center justify-center">
-                            Mehr Lesen
-                        </a>
-                    </div>
-                    
-                    <div class="mt-12 flex flex-wrap justify-center lg:justify-start gap-8 opacity-50 order-4">
-                        <div class="flex items-center gap-2 text-white text-[10px] font-bold uppercase tracking-widest">
-                            <i data-feather="check-circle" class="w-4 h-4 text-[#0ED13D]"></i>
-                            OBD2 Kompatibel
-                        </div>
-                        <div class="flex items-center gap-2 text-white text-[10px] font-bold uppercase tracking-widest">
-                            <i data-feather="check-circle" class="w-4 h-4 text-[#0ED13D]"></i>
-                            Plug & Play
-                        </div>
-                        <div class="flex items-center gap-2 text-white text-[10px] font-bold uppercase tracking-widest">
-                            <i data-feather="check-circle" class="w-4 h-4 text-[#0ED13D]"></i>
-                            Umweltfreundlich
+                    <div class="animate-float relative z-10 w-full max-w-[280px] sm:max-w-md lg:max-w-none">
+                        <img src="images/syngas1.png" alt="SynGas OBD2 Device" class="w-full h-auto drop-shadow-[0_0_100px_rgba(0,255,65,0.4)] scale-110">
+                        
+                        <!-- Floating Badges -->
+                        <div class="absolute -top-10 -right-4 glass p-4 lg:p-6 rounded-2xl shadow-2xl animate-float" style="animation-delay: -2s">
+                            <p class="text-[8px] lg:text-[10px] uppercase font-black tracking-widest text-[#00FF41] mb-1">Echtzeit-Optimierung</p>
+                            <p class="text-xl lg:text-2xl font-black">CALIBRATED</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Product Image (Desktop Only) -->
-                <div class="hidden lg:block flex-[1.2] relative z-10 w-full">
-                    <div class="animate-float">
-                        <img src="images/syngas1.png" alt="SynGas OBD2 Device" class="w-full h-auto drop-shadow-[0_0_120px_rgba(14,209,61,0.35)] scale-110 transform-gpu">
+                <!-- Subtitle & CTA Buttons (Mobile: 3rd, Desktop: bottom of 1st column) -->
+                <div class="order-3 text-center lg:text-left lg:-mt-24">
+                    <p class="text-base md:text-lg lg:text-xl text-gray-400 mb-10 max-w-xl leading-relaxed font-inter mx-auto lg:mx-0">
+                        Maximale Effizienz ohne teure Werkstattbesuche. Sparen Sie bares Geld bei jedem Kilometer. Die Zukunft der Kraftstoffoptimierung ist hier.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start mb-12">
+                        <a href="https://www.knownwalk.com/2JCZKZ1X/21C8X3JD/?uid=4539" class="btn-primary w-full sm:w-auto px-10 py-5 rounded-2xl font-black text-lg uppercase tracking-widest flex items-center justify-center">
+                            Jetzt Sichern
+                            <i data-feather="arrow-right" class="ml-2 w-5 h-5"></i>
+                        </a>
+                        <a href="#how" class="btn-secondary w-full sm:w-auto px-10 py-5 rounded-2xl font-bold text-lg uppercase tracking-widest flex items-center justify-center">
+                            Mehr erfahren
+                        </a>
+                    </div>
+
+                    <div class="flex flex-col justify-center text-[10px] text-gray-500 font-bold uppercase tracking-widest text-center lg:text-left">
+                        <span class="text-[#00FF41] mb-1">✓ Sofort Lieferbar</span>
+                        <span>✓ Nur noch 14 Stück auf Lager</span>
                     </div>
                 </div>
 
@@ -206,64 +226,191 @@
         </div>
     </header>
 
-    <!-- Trust Badges Section -->
-    <section class="py-12 bg-white border-b border-gray-100 overflow-hidden">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-                <div class="flex items-center gap-3">
-                    <i data-feather="shield" class="text-black"></i>
-                    <span class="text-xs font-black uppercase tracking-widest">Premium Schutz</span>
+    <!-- Savings Table Section -->
+    <section class="py-32 bg-darker relative overflow-hidden">
+        <!-- Accent Glow -->
+        <div class="absolute top-1/2 left-0 w-96 h-96 bg-[#00FF41]/5 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2"></div>
+        
+        <div class="container mx-auto px-6 max-w-5xl relative z-10">
+            <div class="text-center mb-20 reveal">
+                <span class="text-[#00FF41] font-black text-[12px] uppercase tracking-[0.6em] mb-4 block">Investitionsrechnung</span>
+                <h2 class="text-4xl md:text-6xl font-black tracking-tight mb-6">Wie viel <span class="text-glow italic">Geld</span> sparen Sie?</h2>
+                <p class="text-gray-500 font-inter max-w-2xl mx-auto">Basierend em durchschnittlichen Kraftstoffpreis von 1,75 €/L amortisiert sich SynGas oft schon nach dem zweiten Monat.</p>
+            </div>
+            
+            <div class="glass border border-white/5 rounded-[3rem] p-12 shadow-[0_40px_100px_rgba(0,0,0,0.5)] overflow-hidden relative">
+                <!-- Data Header -->
+                <div class="grid grid-cols-3 gap-8 pb-10 border-b border-white/5">
+                    <div class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-500">Km / Jahr</div>
+                    <div class="text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 text-center">Aktuelle Kosten</div>
+                    <div class="text-[10px] font-black uppercase tracking-[0.3em] text-[#00FF41] text-right">Potenzielle Ersparnis</div>
                 </div>
-                <div class="flex items-center gap-3">
-                    <i data-feather="cpu" class="text-black"></i>
-                    <span class="text-xs font-black uppercase tracking-widest">KI-Optimiert</span>
+
+                <!-- Rows -->
+                <div class="divide-y divide-white/5 font-inter">
+                    <div class="grid grid-cols-3 gap-8 py-8 items-center group transition-colors hover:bg-white/[0.02]">
+                        <div class="font-black text-2xl tracking-tighter">10.000 <span class="text-gray-600 text-sm">km</span></div>
+                        <div class="text-center text-gray-400 font-medium">~ €1.400</div>
+                        <div class="text-right">
+                            <span class="bg-[#00FF41]/10 text-[#00FF41] px-4 py-2 rounded-full font-black text-lg border border-[#00FF41]/20">€350+</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-8 py-8 items-center bg-white/[0.02] -mx-12 px-12 border-y border-white/5">
+                        <div class="font-black text-3xl tracking-tighter">15.000 <span class="text-gray-600 text-sm">km</span></div>
+                        <div class="text-center text-gray-300 font-medium italic">Empfohlen</div>
+                        <div class="text-right">
+                            <span class="bg-[#00FF41] text-black px-6 py-3 rounded-2xl font-black text-2xl shadow-[0_0_30px_rgba(0,255,65,0.3)]">€525+</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-8 py-8 items-center group transition-colors hover:bg-white/[0.02]">
+                        <div class="font-black text-2xl tracking-tighter">25.000 <span class="text-gray-600 text-sm">km</span></div>
+                        <div class="text-center text-gray-400 font-medium">~ €3.500</div>
+                        <div class="text-right font-black text-2xl text-[#00FF41]">€875+ <span class="hidden md:inline text-xs opacity-50 uppercase ml-1">Gespart</span></div>
+                    </div>
                 </div>
-                <div class="flex items-center gap-3">
-                    <i data-feather="globe" class="text-black"></i>
-                    <span class="text-xs font-black uppercase tracking-widest">EU Konform</span>
+            </div>
+            
+            <p class="mt-10 text-center text-gray-600 text-[11px] font-black uppercase tracking-widest leading-loose">
+                *Berechnete Werte sind Richtwerte. <br>
+                Echte Ergebnisse können je nach Fahrweise und Fahrzeugzustand variieren.
+            </p>
+        </div>
+    </section>
+
+    <!-- High-Tech How it works -->
+    <section id="how" class="py-32 bg-black relative">
+        <!-- Background elements for "BluePrint" look -->
+        <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: repeating-linear-gradient(transparent, transparent 49px, rgba(255,255,255,0.1) 50px), repeating-linear-gradient(90deg, transparent, transparent 49px, rgba(255,255,255,0.1) 50px);"></div>
+        
+        <div class="container mx-auto px-6 max-w-7xl reveal">
+            <div class="flex flex-col lg:grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                
+                <!-- Headline (Always Top) -->
+                <div class="order-1 lg:col-span-1 text-center lg:text-left">
+                   <span class="text-[#00FF41] font-black text-[12px] uppercase tracking-[0.4em] mb-4 block">Technische Präzision</span>
+                   <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-6 leading-tight uppercase">Die Intelligenz hinter dem <span class="italic text-glow">Algorithmus</span></h2>
                 </div>
-                <div class="flex items-center gap-3">
-                    <i data-feather="award" class="text-black"></i>
-                    <span class="text-xs font-black uppercase tracking-widest">TÜV Kompatibel</span>
+
+                <!-- Product Technology Image (Mobile: 2nd, Desktop: 2nd column) -->
+                <div class="order-2 lg:order-last lg:row-span-2 relative group flex items-center justify-center">
+                    <!-- Tech Aura -->
+                    <div class="absolute inset-0 bg-[#00FF41]/10 rounded-full blur-[100px] scale-75 group-hover:scale-110 transition-transform duration-1000"></div>
+                    <div class="relative glass border border-white/10 rounded-[3.8rem] overflow-hidden shadow-2xl p-4 w-full max-w-lg lg:max-w-none">
+                        <img src="images/SGVyb185XzMtRWFzeS1TdGVwc19TeW5HYXMtREUuanBn-w_500.avif" alt="Technologie Visualisierung" class="w-full h-auto block rounded-[3rem] transition-all duration-700">
+                    </div>
+                    <!-- Data Callouts -->
+                    <div class="absolute top-10 -left-10 glass px-6 py-4 rounded-2xl shadow-xl border border-[#00FF41]/30 hidden md:block animate-float">
+                        <p class="text-[9px] font-black text-[#00FF41] uppercase tracking-widest">EFFIZIENZ-STATUS</p>
+                        <p class="text-xl font-black">98,4% OPTIMAL</p>
+                    </div>
+                </div>
+
+                <!-- Description & Cards (Mobile: 3rd, Desktop: bottom of 1st column) -->
+                <div class="order-3 lg:order-2 lg:-mt-10 text-center lg:text-left">
+                   <p class="text-gray-400 text-xl mb-10 leading-relaxed font-inter max-w-xl mx-auto lg:mx-0">
+                       SynGas ist kein herkömmliches "Tuning". Es ist eine dynamische Lösung, die Echtzeitdaten Ihres Fahrstils nutzt, um die Effizienz der Verbrennung zu maximieren.
+                   </p>
+                   
+                   <div class="grid gap-6">
+                       <div class="glass p-8 rounded-3xl group border-l-4 border-l-[#00FF41] transition-all duration-500 hover:translate-x-4">
+                           <div class="flex gap-6 items-start text-left">
+                               <div class="w-12 h-12 bg-[#00FF41]/10 rounded-2xl flex items-center justify-center flex-shrink-0 border border-[#00FF41]/20">
+                                   <i data-feather="cpu" class="text-[#00FF41] w-6 h-6"></i>
+                               </div>
+                               <div>
+                                   <h4 class="font-black text-xl mb-2 uppercase tracking-tight">Adaptive Neukalibrierung</h4>
+                                   <p class="text-gray-500 font-inter tracking-wide leading-relaxed">SynGas optimiert das Luft-Kraftstoff-Verhältnis (AFR) tausendmal pro Sekunde.</p>
+                               </div>
+                           </div>
+                       </div>
+
+                       <div class="glass p-8 rounded-3xl group border-l-4 border-l-[#00FF41]/30 hover:border-l-[#00FF41] transition-all duration-500 hover:translate-x-4">
+                           <div class="flex gap-6 items-start text-left">
+                               <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center flex-shrink-0 border border-white/10 group-hover:bg-[#00FF41]/10 group-hover:border-[#00FF41]/20">
+                                   <i data-feather="zap" class="text-gray-500 group-hover:text-[#00FF41] w-6 h-6"></i>
+                               </div>
+                               <div>
+                                   <h4 class="font-black text-xl mb-2 uppercase tracking-tight">Drehmoment-Boost</h4>
+                                   <p class="text-gray-500 font-inter tracking-wide leading-relaxed">Erhöht das Drehmoment im niedrigen Drehzahlbereich für maximale Effizienz.</p>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How it works -->
-    <section id="how" class="py-32 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl reveal">
-            <div class="grid lg:grid-cols-2 gap-20 items-center">
-                <div>
-                   <span class="text-[#0ED13D] font-black text-[12px] uppercase tracking-[0.4em] mb-4 block">Wissenschaft & Technik</span>
-                   <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-8">Wie SynGas Ihren Motor revolutioniert</h2>
-                   <p class="text-gray-500 text-lg mb-8 leading-relaxed">
-                       SynGas ist ein intelligentes Gerät zur Kraftstoffoptimierung, das in den OBD2-Port Ihres Fahrzeugs eingesteckt wird. Sobald es angeschlossen ist, beginnt es, Ihre Fahrgewohnheiten zu analysieren und das Steuergerät (ECU) Ihres Fahrzeugs neu zu kalibrieren.
-                   </p>
-                   <ul class="space-y-6">
-                       <li class="flex gap-4">
-                           <div class="w-8 h-8 bg-[#0ED13D]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                               <i data-feather="trending-down" class="text-[#0ED13D] w-4 h-4"></i>
-                           </div>
-                           <p class="text-gray-600 font-medium">Optimiert das Luft-Kraftstoff-Gemisch für maximale Verbrennungseffizienz.</p>
-                       </li>
-                       <li class="flex gap-4">
-                           <div class="w-8 h-8 bg-[#0ED13D]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                               <i data-feather="settings" class="text-[#0ED13D] w-4 h-4"></i>
-                           </div>
-                           <p class="text-gray-600 font-medium">Passt Zündzeitpunkte an, um unnötigen Energieverlust zu vermeiden.</p>
-                       </li>
-                       <li class="flex gap-4">
-                           <div class="w-8 h-8 bg-[#0ED13D]/10 rounded-full flex items-center justify-center flex-shrink-0">
-                               <i data-feather="zap" class="text-[#0ED13D] w-4 h-4"></i>
-                           </div>
-                           <p class="text-gray-600 font-medium">Erhöht das Drehmoment im unteren Drehzahlbereich für sanfteres Fahren.</p>
-                       </li>
-                   </ul>
+
+    <!-- AAA Testimonials Section -->
+    <section class="py-32 bg-dark relative overflow-hidden">
+        <!-- Subtle Glows -->
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-[#00FF41]/5 rounded-full blur-[180px]"></div>
+        
+        <div class="container mx-auto px-6 max-w-7xl reveal">
+            <div class="text-center mb-24">
+                <span class="text-[#00FF41] font-black text-[12px] uppercase tracking-[0.5em] mb-4 block">Erfahrungsberichte</span>
+                <h2 class="text-4xl md:text-6xl font-black tracking-tight uppercase leading-none">Warum Kunden <br><span class="italic text-glow">SynGas</span> vertrauen</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Testimonial 1 -->
+                <div class="glass p-12 rounded-[2.5rem] relative group border border-white/5 hover:border-[#00FF41]/30 transition-all duration-500">
+                    <div class="absolute -top-6 -left-6 w-16 h-16 glass rounded-full flex items-center justify-center border border-white/10 text-[#00FF41]">
+                        <i data-feather="message-circle"></i>
+                    </div>
+                    <div class="flex text-[#00FF41] mb-8 gap-1">
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-xl text-gray-300 leading-relaxed font-inter italic mb-10">"In Deutschland sind Spritpreise extrem. SynGas liefert genau was es verspricht. Früher kam ich 800km mit einem Tank, heute fast 1.100km. Eine Investition, die sich sofort rechnet."</p>
+                    <div class="flex items-center gap-5 mt-auto">
+                        <div class="w-14 h-14 bg-gradient-to-br from-[#00FF41] to-dark rounded-full flex items-center justify-center font-black text-black text-xl">TM</div>
+                        <div>
+                            <p class="font-black text-lg uppercase leading-none mb-1">Thomas Mertens</p>
+                            <p class="text-[10px] text-gray-600 font-bold uppercase tracking-widest">Berlin, DE</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="relative">
-                    <div class="rounded-[4rem] overflow-hidden border border-gray-100 shadow-2xl">
-                        <img src="images/SGVyb185XzMtRWFzeS1TdGVwc19TeW5HYXMtREUuanBn-w_500.avif" alt="Easy Steps" class="w-full h-auto block">
+
+                <!-- Testimonial 2 -->
+                <div class="glass p-12 rounded-[2.5rem] relative group border border-white/5 hover:border-[#00FF41]/30 transition-all duration-500 bg-white/[0.03]">
+                    <div class="flex text-[#00FF41] mb-8 gap-1">
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-xl text-gray-300 leading-relaxed font-inter italic mb-10">"Die Plug-and-Play Installation ist perfekt. Kein Werkzeug, keine Werkstatt. Mein Auto fährt sich spritzig und der Geldbeutel atmet auf. Sehr zufrieden!"</p>
+                    <div class="flex items-center gap-5 mt-auto">
+                        <div class="w-14 h-14 bg-gradient-to-br from-[#00FF41] to-dark rounded-full flex items-center justify-center font-black text-black text-xl">SK</div>
+                        <div>
+                            <p class="font-black text-lg uppercase leading-none mb-1">Stefan Krause</p>
+                            <p class="text-[10px] text-gray-600 font-bold uppercase tracking-widest">Hamburg, DE</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="glass p-12 rounded-[2.5rem] relative group border border-white/5 hover:border-[#00FF41]/30 transition-all duration-500">
+                    <div class="flex text-[#00FF41] mb-8 gap-1">
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-xl text-gray-300 leading-relaxed font-inter italic mb-10">"Besonders auf der Autobahn merkt man den Unterschied. Weniger Stopps an der Tankstelle bedeutet mehr Zeit und weniger Kosten. Ein Must-have!"</p>
+                    <div class="flex items-center gap-5 mt-auto">
+                        <div class="w-14 h-14 bg-gradient-to-br from-[#00FF41] to-dark rounded-full flex items-center justify-center font-black text-black text-xl">LB</div>
+                        <div>
+                            <p class="font-black text-lg uppercase leading-none mb-1">Lena Bauer</p>
+                            <p class="text-[10px] text-gray-600 font-bold uppercase tracking-widest">München, DE</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -271,85 +418,83 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-32 bg-gray-50">
+    <section id="faq" class="py-32 bg-darker overflow-hidden">
         <div class="container mx-auto px-6 max-w-4xl reveal">
-            <div class="text-center mb-20">
-                <span class="text-[#0ED13D] font-black text-[12px] uppercase tracking-[0.4em] mb-4 block">Information & Support</span>
-                <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-4">Häufig gestellte Fragen (FAQ)</h2>
-                <p class="text-gray-400 font-medium">Alles, was Sie über den SynGas OBD Fuel Saver und die Kraftstoffoptimierung wissen müssen.</p>
+            <div class="text-center mb-24">
+                <span class="text-[#00FF41] font-black text-[12px] uppercase tracking-[0.5em] mb-4 block">Knowledge Base</span>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tight mb-4 uppercase">Häufig gestellte <span class="italic text-glow">Fragen</span></h2>
             </div>
 
-            <div class="space-y-4">
+            <div class="space-y-6">
                 <!-- Q1: Compatibility -->
-                <div class="faq-item group bg-white rounded-3xl p-8 cursor-pointer hover:bg-gray-50 transition-all border border-gray-100 shadow-sm" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center gap-6 font-bold text-xl uppercase tracking-tight text-gray-800">
-                        Ist der SynGas OBD2 Fuel Saver mit allen Fahrzeugmarken kompatibel?
-                        <i data-feather="chevron-down" class="text-[#0ED13D]"></i>
+                <div class="faq-item group glass rounded-[2rem] p-10 cursor-pointer transition-all border border-white/5 hover:shadow-[0_0_50px_rgba(0,0,0,0.3)]" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center gap-8 font-black text-xl uppercase tracking-tight text-white group-hover:text-[#00FF41] transition-colors">
+                        Kompatibilität & Fahrzeugtypen
+                        <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#00FF41] transition-all">
+                            <i data-feather="plus" class="text-gray-600 group-hover:text-[#00FF41] w-4 h-4"></i>
+                        </div>
                     </div>
-                    <div class="faq-answer max-h-0 overflow-hidden opacity-0 text-gray-500 font-medium leading-relaxed transition-all duration-300">
-                        Ja, der SynGas OBD Fuel Saver ist universell einsetzbar. Er ist mit fast allen Benzin-, Diesel- und Hybridfahrzeugen kompatibel, die nach 1996 hergestellt wurden und über eine standardisierte OBD2-Schnittstelle verfügen.
-                    </div>
-                </div>
-
-                <!-- Q2: Performance vs Economy -->
-                <div class="faq-item group bg-white rounded-3xl p-8 cursor-pointer hover:bg-gray-50 transition-all border border-gray-100 shadow-sm" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center gap-6 font-bold text-xl uppercase tracking-tight text-gray-800">
-                        Beeinträchtigt SynGas die Motorleistung oder die Garantie?
-                        <i data-feather="chevron-down" class="text-[#0ED13D]"></i>
-                    </div>
-                    <div class="faq-answer max-h-0 overflow-hidden opacity-0 text-gray-500 font-medium leading-relaxed transition-all duration-300">
-                        Keineswegs. SynGas optimiert die Kraftstoffeinspritzung innerhalb der sicheren Werksgrenzen. Es handelt sich nicht um ein permanentes Chiptuning. Da das Gerät rückstandslos entfernbar ist, bleibt Ihre Fahrzeuggarantie unberührt.
+                    <div class="faq-answer max-h-0 overflow-hidden opacity-0 text-gray-500 font-inter font-medium leading-relaxed transition-all duration-500 mt-0">
+                        <div class="pt-8 border-t border-white/5">
+                            SynGas ist universell für alle Fahrzeuge mit OBD2-Schnittstelle (Diesel, Benzin, Hybrid ab Bj. 1996) geeignet. Es erkennt automatisch das Protokoll Ihres Steuergeräts.
+                        </div>
                     </div>
                 </div>
 
-                <!-- Q3: Real World Savings -->
-                <div class="faq-item group bg-white rounded-3xl p-8 cursor-pointer hover:bg-gray-50 transition-all border border-gray-100 shadow-sm" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center gap-6 font-bold text-xl uppercase tracking-tight text-gray-800">
-                        Wie viel Kraftstoff kann ich wirklich sparen?
-                        <i data-feather="chevron-down" class="text-[#0ED13D]"></i>
+                <!-- Q2: Safety -->
+                <div class="faq-item group glass rounded-[2rem] p-10 cursor-pointer transition-all border border-white/5 hover:shadow-[0_0_50px_rgba(0,0,0,0.3)]" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center gap-8 font-black text-xl uppercase tracking-tight text-white group-hover:text-[#00FF41] transition-colors">
+                        Sicherheit & Motorgarantie
+                        <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#00FF41] transition-all">
+                            <i data-feather="plus" class="text-gray-600 group-hover:text-[#00FF41] w-4 h-4"></i>
+                        </div>
                     </div>
-                    <div class="faq-answer max-h-0 overflow-hidden opacity-0 text-gray-500 font-medium leading-relaxed transition-all duration-300">
-                        Ergebnisse zeigen eine Senkung des Verbrauchs um bis zu 55 %, abhängig vom Fahrzeugzustand und Fahrstil. Im Durchschnitt amortisiert sich die Investition bereits nach wenigen Tankfüllungen.
-                    </div>
-                </div>
-
-                <!-- Q4: Installation -->
-                <div class="faq-item group bg-white rounded-3xl p-8 cursor-pointer hover:bg-gray-50 transition-all border border-gray-100 shadow-sm" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center gap-6 font-bold text-xl uppercase tracking-tight text-gray-800">
-                        Benötige ich einen Mechaniker für die Installation?
-                        <i data-feather="chevron-down" class="text-[#0ED13D]"></i>
-                    </div>
-                    <div class="faq-answer max-h-0 overflow-hidden opacity-0 text-gray-500 font-medium leading-relaxed transition-all duration-300">
-                        Nein, die Installation ist kinderleicht und dauert weniger als 2 Minuten. Sie stecken das Gerät einfach in den OBD2-Port Ihres Fahrzeugs. Es ist keine Softwareinstallation und kein Werkzeug erforderlich.
+                    <div class="faq-answer max-h-0 overflow-hidden opacity-0 text-gray-500 font-inter font-medium leading-relaxed transition-all duration-500 mt-0">
+                        <div class="pt-8 border-t border-white/5">
+                            Absolut sicher. SynGas optimiert Parameter nur innerhalb der vom Hersteller definierten Toleranzgrenzen. Sobald das Gerät abgezogen wird, kehrt das Fahrzeug sofort in den Originalzustand zurück. Es erfolgt kein dauerhafter Eingriff in den Speicher.
+                        </div>
                     </div>
                 </div>
 
-                <!-- Q5: Regulatory -->
-                <div class="faq-item group bg-white rounded-3xl p-8 cursor-pointer hover:bg-gray-50 transition-all border border-gray-100 shadow-sm" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center gap-6 font-bold text-xl uppercase tracking-tight text-gray-800">
-                        Ist der Einsatz in der EU und Deutschland legal?
-                        <i data-feather="chevron-down" class="text-[#0ED13D]"></i>
+                <!-- Q3: Legality -->
+                <div class="faq-item group glass rounded-[2rem] p-10 cursor-pointer transition-all border border-white/5 hover:shadow-[0_0_50px_rgba(0,0,0,0.3)]" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center gap-8 font-black text-xl uppercase tracking-tight text-white group-hover:text-[#00FF41] transition-colors">
+                        Rechtliche Situation in der EU
+                        <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#00FF41] transition-all">
+                            <i data-feather="plus" class="text-gray-600 group-hover:text-[#00FF41] w-4 h-4"></i>
+                        </div>
                     </div>
-                    <div class="faq-answer max-h-0 overflow-hidden opacity-0 text-gray-500 font-medium leading-relaxed transition-all duration-300">
-                        Ja, der Einsatz ist vollkommen legal. SynGas greift nicht in die Abgassteuerung ein, sondern optimiert lediglich die Verbrennungseffizienz. Wir bieten zudem eine 30-tägige Geld-zurück-Garantie.
+                    <div class="faq-answer max-h-0 overflow-hidden opacity-0 text-gray-500 font-inter font-medium leading-relaxed transition-all duration-500 mt-0">
+                        <div class="pt-8 border-t border-white/5">
+                            Der Einsatz ist vollkommen legal. Das Gerät verändert nicht die Abgasnorm oder die mechanische Beschaffenheit des Motors. Es dient lediglich der softwareseitigen Effizienzoptimierung.
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA Section -->
-    <section class="py-24 bg-white border-t border-gray-100">
-        <div class="container mx-auto px-6 text-center max-w-4xl">
-             <h2 class="text-4xl md:text-5xl font-black text-black mb-8 tracking-tighter">Bereit für die Zukunft des Fahrens?</h2>
-             <p class="text-xl text-gray-500 mb-12">Sichern Sie sich heute Ihren <span class="text-black font-bold">75% Rabatt</span> und fangen Sie an Geld zu sparen.</p>
-             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                 <a href="https://www.knownwalk.com/2JCZKZ1X/21C8X3JD/?uid=4539" class="btn-primary px-12 py-6 rounded-2xl font-black text-xl uppercase tracking-widest flex items-center justify-center">
+    <!-- Final AAA CTA Section -->
+    <section class="py-40 bg-black relative overflow-hidden">
+        <!-- Giant background text -->
+        <div class="absolute inset-0 flex items-center justify-center opacity-[0.02] pointer-events-none select-none">
+            <span class="text-[30vw] font-black uppercase tracking-tighter">SYNGAS</span>
+        </div>
+        
+        <div class="container mx-auto px-6 text-center max-w-4xl relative z-10 reveal">
+             <h2 class="text-5xl md:text-8xl font-black text-white mb-10 tracking-tighter uppercase leading-[0.9]">Starten Sie die <br><span class="text-[#00FF41] text-glow italic">Transformation</span></h2>
+             <p class="text-2xl text-gray-400 mb-16 font-inter">Letzte Chance: Sichern Sie sich heute Ihren <span class="text-white font-bold">75% Rabatt</span> und stoppen Sie unnötige Kraftstoffkosten.</p>
+             <div class="flex flex-col sm:flex-row gap-8 justify-center items-center">
+                 <a href="https://www.knownwalk.com/2JCZKZ1X/21C8X3JD/?uid=4539" class="btn-primary px-16 py-8 rounded-3xl font-black text-2xl uppercase tracking-[0.2em] flex items-center justify-center shadow-[0_20px_80px_rgba(0,255,65,0.4)]">
                     Jetzt Bestellen
                  </a>
-                 <a href="https://www.knownwalk.com/2JCZKZ1X/21C8X3JD/" class="btn-secondary px-12 py-6 rounded-2xl font-black text-xl uppercase tracking-widest flex items-center justify-center">
-                    Mehr Erfahren
-                 </a>
+                 <div class="text-left">
+                     <div class="flex items-center gap-3 text-[#00FF41] mb-2 uppercase font-black text-xs tracking-widest">
+                         <i data-feather="shield" class="w-4 h-4"></i>
+                         30 Tage Geld-zurück-Garantie
+                     </div>
+                     <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Absolut risikofreie Bestellung</p>
+                 </div>
              </div>
         </div>
     </section>
