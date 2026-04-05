@@ -8,9 +8,9 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
     
     <!-- SEO & Canonical (Google Ads 2026 Compliance) -->
-    <link rel="canonical" href="https://syngas.24offers.shop/">
-    <link rel="alternate" hreflang="de-DE" href="https://syngas.24offers.shop/">
-    <link rel="alternate" hreflang="x-default" href="https://syngas.24offers.shop/">
+    <link rel="canonical" href="https://syngas.offersnowx.shop/">
+    <link rel="alternate" hreflang="de-DE" href="https://syngas.offersnowx.shop/">
+    <link rel="alternate" hreflang="x-default" href="https://syngas.offersnowx.shop/">
 
     <!-- External Assets -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -96,19 +96,38 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #111827; }
         ::-webkit-scrollbar-thumb { background: var(--brand-neon-green); border-radius: 10px; }
+        
+        .legal-content h2 { font-weight: 900; font-size: 1.5rem; margin-top: 1.5rem; margin-bottom: 1rem; color: #000; }
+        .legal-content h3 { font-weight: 700; font-size: 1.2rem; margin-top: 1.2rem; margin-bottom: 0.8rem; color: #333; }
+        .legal-content p { margin-bottom: 1rem; }
+        .legal-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+        
+        #cookie-banner.hidden { transform: translateY(100%); opacity: 0; }
     </style>
 </head>
 <body class="overflow-x-hidden">
 
+    <!-- Cookie Consent (GDPR Compliance) -->
+    <div id="cookie-banner" class="fixed bottom-0 inset-x-0 z-[300] p-6 transition-all duration-500 transform">
+        <div class="max-w-4xl mx-auto bg-black/95 backdrop-blur-xl border border-white/10 rounded-[2rem] p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 shadow-2xl">
+            <div class="flex-1 text-center md:text-left">
+                <p class="text-white text-sm font-medium leading-relaxed">
+                    Wir verwenden Cookies, um Ihre Erfahrung zu verbessern und uns bei der Optimierung unserer Website zu helfen. Durch die Nutzung der Website stimmen Sie unserer <a href="javascript:void(0)" onclick="openPolicy('privacy')" class="text-[#0ED13D] underline">Datenschutzerklärung</a> zu.
+                </p>
+            </div>
+            <div class="flex gap-4">
+                <button onclick="acceptCookies()" class="bg-[#0ED13D] text-white px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest hover:scale-105 transition-transform">Akzeptieren</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Navbar -->
     <nav class="py-5 px-6 flex justify-between items-center bg-black/90 backdrop-blur-md border-b border-white/10 sticky top-0 z-[100]">
         <div class="flex items-center gap-2">
-            <img src="images/favicon.png" alt="SynGas Logo" class="h-8 w-8">
-            <span class="text-2xl font-black text-white tracking-tighter uppercase">SynGas</span>
+            <img src="images/logo.svg" alt="SynGas Logo" class="h-8">
         </div>
         <div class="hidden md:flex gap-8 text-[11px] font-bold text-gray-400 uppercase tracking-widest">
-            <a href="#features" class="hover:text-[#0ED13D] transition-colors">Funktionen</a>
-            <a href="#how-it-works" class="hover:text-[#0ED13D] transition-colors">Wie es funktioniert</a>
+            <a href="#how" class="hover:text-[#0ED13D] transition-colors">Informationen</a>
             <a href="#faq" class="hover:text-[#0ED13D] transition-colors">FAQ</a>
         </div>
         <a href="https://www.knownwalk.com/2JCZKZ1X/21C8X3JD/?uid=4539" class="text-[10px] bg-[#0ED13D] text-white px-5 py-2.5 rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform">Jetzt Bestellen</a>
@@ -120,8 +139,8 @@
             <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
                 
                 <!-- Content -->
-                <div class="flex-1 text-center lg:text-left z-10">
-                    <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full mb-8">
+                <div class="flex-1 text-center lg:text-left z-10 flex flex-col">
+                    <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-4 py-2 rounded-full mb-8 self-center lg:self-start">
                         <div class="flex text-[#0ED13D]">
                             <i data-feather="star" class="w-3.5 h-3.5 fill-current"></i>
                             <i data-feather="star" class="w-3.5 h-3.5 fill-current"></i>
@@ -135,12 +154,23 @@
                     <h1 class="text-5xl md:text-8xl font-black text-white leading-[0.95] mb-8 tracking-tighter">
                         Senken Sie Ihren <span class="text-[#0ED13D]">Kraftstoffverbrauch</span> um bis zu 55 %
                     </h1>
+
+                    <div class="inline-block bg-[#0ED13D] text-black font-black px-4 py-1.5 rounded-lg mb-8 uppercase tracking-widest text-sm animate-pulse self-center lg:self-start">
+                        -75% RABATT AKTION HEUTE
+                    </div>
                     
                     <p class="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl leading-relaxed">
-                        Effizienz freischalten: Weiter fahren, weniger ausgeben mit der innovativen SynGas-Technologie. Die ultimative Lösung für moderne Autofahrer.
+                        Effizienz freischalten: Weiter fahren, weniger ausgeben mit der innovativen SynGas-Technologie. Die ultimative Lösung für moderne Autofahrer in Deutschland.
                     </p>
 
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <!-- Product Image (Conditional Mobile Order) -->
+                    <div class="block lg:hidden w-full max-w-xs mx-auto mb-12 order-2">
+                        <div class="animate-float">
+                            <img src="images/product.png" alt="SynGas OBD2 Device" class="w-full h-auto drop-shadow-[0_0_80px_rgba(14,209,61,0.25)]">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start order-3">
                         <a href="https://www.knownwalk.com/2JCZKZ1X/21C8X3JD/?uid=4539" class="btn-primary px-10 py-5 rounded-2xl font-black text-lg uppercase tracking-widest flex items-center justify-center">
                             <i data-feather="shopping-cart" class="mr-3"></i>
                             Jetzt Kaufen
@@ -150,7 +180,7 @@
                         </a>
                     </div>
                     
-                    <div class="mt-12 flex flex-wrap justify-center lg:justify-start gap-8 opacity-50">
+                    <div class="mt-12 flex flex-wrap justify-center lg:justify-start gap-8 opacity-50 order-4">
                         <div class="flex items-center gap-2 text-white text-[10px] font-bold uppercase tracking-widest">
                             <i data-feather="check-circle" class="w-4 h-4 text-[#0ED13D]"></i>
                             OBD2 Kompatibel
@@ -166,115 +196,79 @@
                     </div>
                 </div>
 
-                <!-- Product Image -->
-                <div class="flex-1 relative z-10 w-full max-w-lg lg:max-w-none">
+                <!-- Product Image (Desktop Only) -->
+                <div class="hidden lg:block flex-1 relative z-10 w-full max-w-lg lg:max-w-none">
                     <div class="animate-float">
                         <img src="images/product.png" alt="SynGas OBD2 Device" class="w-full h-auto drop-shadow-[0_0_80px_rgba(14,209,61,0.25)]">
                     </div>
-                    <!-- Decorative Elements -->
-                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-[#0ED13D]/10 rounded-full blur-3xl"></div>
-                    <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl"></div>
                 </div>
 
             </div>
-        </div>
-        
-        <!-- Abstract Background -->
-        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
-            <div class="absolute top-0 right-0 w-[50%] h-full bg-radial from-[#0ED13D]/20 to-transparent"></div>
         </div>
     </header>
 
-    <!-- Content / Briefing Extraction Section -->
-    <section id="features" class="py-32 bg-white">
-        <div class="container mx-auto px-6 max-w-6xl">
-            <div class="text-center mb-24 reveal">
-                <span class="text-[#0ED13D] font-black text-[12px] uppercase tracking-[0.4em] mb-4 block">Warum SynGas?</span>
-                <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-6">Revolutionieren Sie Ihre Fahrt</h2>
-                <div class="w-20 h-1.5 bg-[#0ED13D] mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div class="p-10 bg-gray-50 rounded-[2.5rem] border border-gray-100 hover:border-[#0ED13D]/30 transition-all group reveal">
-                    <div class="w-16 h-16 bg-[#0ED13D]/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                        <i data-feather="trending-down" class="text-[#0ED13D] w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-black mb-4 tracking-tight">Kraftstoffverbrauch senken</h3>
-                    <p class="text-gray-500 leading-relaxed font-medium">
-                        SynGas wurde entwickelt, um den Kraftstoffverbrauch Ihres Autos drastisch zu senken. Legen Sie mehr Kilometer mit weniger Treibstoff zurück.
-                    </p>
+    <!-- Trust Badges Section -->
+    <section class="py-12 bg-white border-b border-gray-100 overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                <div class="flex items-center gap-3">
+                    <i data-feather="shield" class="text-black"></i>
+                    <span class="text-xs font-black uppercase tracking-widest">Premium Schutz</span>
                 </div>
-
-                <!-- Feature 2 -->
-                <div class="p-10 bg-gray-50 rounded-[2.5rem] border border-gray-100 hover:border-[#0ED13D]/30 transition-all group reveal" style="transition-delay: 0.1s;">
-                    <div class="w-16 h-16 bg-[#0ED13D]/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                        <i data-feather="cpu" class="text-[#0ED13D] w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-black mb-4 tracking-tight">Optimiert Ihr Steuergerät</h3>
-                    <p class="text-gray-500 leading-relaxed font-medium">
-                        Verbessern Sie Ihr Fahrerlebnis, indem Sie das Steuergerät (ECU) Ihres Fahrzeugs automatisch optimieren – basierend auf Ihrem Fahrstil.
-                    </p>
+                <div class="flex items-center gap-3">
+                    <i data-feather="cpu" class="text-black"></i>
+                    <span class="text-xs font-black uppercase tracking-widest">KI-Optimiert</span>
                 </div>
-
-                <!-- Feature 3 -->
-                <div class="p-10 bg-gray-50 rounded-[2.5rem] border border-gray-100 hover:border-[#0ED13D]/30 transition-all group reveal" style="transition-delay: 0.2s;">
-                    <div class="w-16 h-16 bg-[#0ED13D]/10 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                        <i data-feather="zap" class="text-[#0ED13D] w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-2xl font-black mb-4 tracking-tight">Einfache Installation</h3>
-                    <p class="text-gray-500 leading-relaxed font-medium">
-                        Mühelose Installation: Schließen Sie das Gerät einfach an den OBD2-Anschluss Ihres Autos an. Kein technisches Fachwissen nötig.
-                    </p>
+                <div class="flex items-center gap-3">
+                    <i data-feather="globe" class="text-black"></i>
+                    <span class="text-xs font-black uppercase tracking-widest">EU Konform</span>
+                </div>
+                <div class="flex items-center gap-3">
+                    <i data-feather="award" class="text-black"></i>
+                    <span class="text-xs font-black uppercase tracking-widest">TÜV Kompatibel</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- How it works -->
-    <section id="how-it-works" class="py-32 bg-gray-950 text-white overflow-hidden">
-        <div class="container mx-auto px-6 max-w-6xl relative">
-            <div class="flex flex-col lg:flex-row items-center gap-20">
-                <div class="flex-1 reveal">
-                    <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-8 italic"><span class="text-[#0ED13D]">Plug, </span>Drive & Save.</h2>
-                    <div class="space-y-12">
-                        <div class="flex gap-6">
-                            <div class="text-4xl font-black text-[#0ED13D]/20">01</div>
-                            <div>
-                                <h4 class="text-xl font-bold mb-2 uppercase tracking-wide">Plug in</h4>
-                                <p class="text-gray-400">Schließen Sie SynGas an den OBD2-Anschluss Ihres Autos an.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <div class="text-4xl font-black text-[#0ED13D]/20">02</div>
-                            <div>
-                                <h4 class="text-xl font-bold mb-2 uppercase tracking-wide">Kalibrieren</h4>
-                                <p class="text-gray-400">Benutzen Sie Ihr Auto wie gewohnt. SynGas passt sich nach ca. 240 km an.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <div class="text-4xl font-black text-[#0ED13D]/20">03</div>
-                            <div>
-                                <h4 class="text-xl font-bold mb-2 uppercase tracking-wide">Sparen</h4>
-                                <p class="text-gray-400">Erleben Sie weniger Verbrauch und gesteigerte Leistung bei jeder Fahrt.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="https://www.knownwalk.com/2JCZKZ1X/21C8X3JD/?uid=4539" class="mt-16 inline-flex items-center text-[#0ED13D] font-black uppercase tracking-[0.3em] text-sm group">
-                        Sichern Sie sich 75% RABATT
-                        <i data-feather="arrow-right" class="ml-4 w-5 h-5 group-hover:ml-6 transition-all"></i>
-                    </a>
+    <section id="how" class="py-32 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl reveal">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div>
+                   <span class="text-[#0ED13D] font-black text-[12px] uppercase tracking-[0.4em] mb-4 block">Wissenschaft & Technik</span>
+                   <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-8">Wie SynGas Ihren Motor revolutioniert</h2>
+                   <p class="text-gray-500 text-lg mb-8 leading-relaxed">
+                       SynGas ist ein intelligentes Gerät zur Kraftstoffoptimierung, das in den OBD2-Port Ihres Fahrzeugs eingesteckt wird. Sobald es angeschlossen ist, beginnt es, Ihre Fahrgewohnheiten zu analysieren und das Steuergerät (ECU) Ihres Fahrzeugs neu zu kalibrieren.
+                   </p>
+                   <ul class="space-y-6">
+                       <li class="flex gap-4">
+                           <div class="w-8 h-8 bg-[#0ED13D]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                               <i data-feather="trending-down" class="text-[#0ED13D] w-4 h-4"></i>
+                           </div>
+                           <p class="text-gray-600 font-medium">Optimiert das Luft-Kraftstoff-Gemisch für maximale Verbrennungseffizienz.</p>
+                       </li>
+                       <li class="flex gap-4">
+                           <div class="w-8 h-8 bg-[#0ED13D]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                               <i data-feather="settings" class="text-[#0ED13D] w-4 h-4"></i>
+                           </div>
+                           <p class="text-gray-600 font-medium">Passt Zündzeitpunkte an, um unnötigen Energieverlust zu vermeiden.</p>
+                       </li>
+                       <li class="flex gap-4">
+                           <div class="w-8 h-8 bg-[#0ED13D]/10 rounded-full flex items-center justify-center flex-shrink-0">
+                               <i data-feather="zap" class="text-[#0ED13D] w-4 h-4"></i>
+                           </div>
+                           <p class="text-gray-600 font-medium">Erhöht das Drehmoment im unteren Drehzahlbereich für sanfteres Fahren.</p>
+                       </li>
+                   </ul>
                 </div>
-                <div class="flex-1 relative reveal" style="transition-delay: 0.2s;">
-                    <div class="bg-[#0ED13D] p-1 rounded-[3rem] shadow-[0_0_100px_rgba(14,209,61,0.15)] rotate-3 translate-x-10">
-                        <div class="bg-black p-10 rounded-[2.8rem]">
-                             <div class="text-center">
-                                <span class="text-[10px] font-black uppercase bg-[#0ED13D] text-black px-4 py-1.5 rounded-full mb-6 inline-block">Maschinenbauingenieur Andrew Stevens</span>
-                                <p class="text-lg font-medium italic text-gray-300 leading-relaxed">
-                                    "SynGas zeichnet sich durch seine Fähigkeit aus, den Verbrauch effektiv zu optimieren. Eine zuverlässige und innovative Lösung."
-                                </p>
-                             </div>
-                        </div>
+                <div class="relative">
+                    <div class="aspect-square bg-gray-50 rounded-[4rem] flex items-center justify-center overflow-hidden">
+                        <img src="images/product.png" alt="OBD2 Device" class="w-3/4 animate-float">
+                    </div>
+                    <div class="absolute -bottom-10 -right-10 bg-white p-8 rounded-3xl shadow-2xl hidden md:block">
+                        <div class="text-4xl font-black text-[#0ED13D] mb-1 leading-none">55%</div>
+                        <div class="text-[10px] font-black text-gray-400 uppercase tracking-widest">Max. Einsparung</div>
                     </div>
                 </div>
             </div>
@@ -282,120 +276,134 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-32 bg-white">
+    <section id="faq" class="py-32 bg-gray-50">
         <div class="container mx-auto px-6 max-w-4xl reveal">
             <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-4">Häufig gestellte Fragen</h2>
-                <p class="text-gray-400">Alles, was Sie über Ihren neuen Fuel Saver wissen müssen.</p>
+                <span class="text-[#0ED13D] font-black text-[12px] uppercase tracking-[0.4em] mb-4 block">Information & Support</span>
+                <h2 class="text-4xl md:text-5xl font-black tracking-tighter mb-4">Häufig gestellte Fragen (FAQ)</h2>
+                <p class="text-gray-400 font-medium">Alles, was Sie über den SynGas OBD Fuel Saver und die Kraftstoffoptimierung wissen müssen.</p>
             </div>
 
-            <div class="space-y-5">
-                <!-- Q1 -->
-                <div class="faq-item group bg-gray-50 rounded-3xl p-8 cursor-pointer hover:bg-gray-100 transition-all border border-gray-100" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center gap-6">
-                        <h4 class="text-xl font-bold text-gray-800 tracking-tight">Funktioniert SynGas auch mit älteren Fahrzeugen?</h4>
-                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:bg-[#0ED13D] group-hover:text-white transition-all">
-                             <i data-feather="chevron-down" class="w-5 h-5"></i>
-                        </div>
+            <div class="space-y-4">
+                <!-- Q1: Compatibility -->
+                <div class="faq-item group bg-white rounded-3xl p-8 cursor-pointer hover:bg-gray-50 transition-all border border-gray-100 shadow-sm" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center gap-6 font-bold text-xl uppercase tracking-tight text-gray-800">
+                        Ist der SynGas OBD2 Fuel Saver mit allen Fahrzeugmarken kompatibel?
+                        <i data-feather="chevron-down" class="text-[#0ED13D]"></i>
                     </div>
                     <div class="faq-answer max-h-0 overflow-hidden opacity-0 text-gray-500 font-medium leading-relaxed transition-all duration-300">
-                        Ja, SynGas ist mit fast allen Fahrzeugen kompatibel, die nach 1996 hergestellt wurden und über einen OBD2-Anschluss verfügen.
+                        Ja, der SynGas OBD Fuel Saver ist universell einsetzbar. Er ist mit fast allen Benzin-, Diesel- und Hybridfahrzeugen kompatibel, die nach 1996 hergestellt wurden und über eine standardisierte OBD2-Schnittstelle verfügen.
                     </div>
                 </div>
 
-                <!-- Q2 -->
-                <div class="faq-item group bg-gray-50 rounded-3xl p-8 cursor-pointer hover:bg-gray-100 transition-all border border-gray-100" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center gap-6">
-                        <h4 class="text-xl font-bold text-gray-800 tracking-tight">Wie viele SynGas Geräte benötige ich?</h4>
-                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:bg-[#0ED13D] group-hover:text-white transition-all">
-                             <i data-feather="chevron-down" class="w-5 h-5"></i>
-                        </div>
+                <!-- Q2: Performance vs Economy -->
+                <div class="faq-item group bg-white rounded-3xl p-8 cursor-pointer hover:bg-gray-50 transition-all border border-gray-100 shadow-sm" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center gap-6 font-bold text-xl uppercase tracking-tight text-gray-800">
+                        Beeinträchtigt SynGas die Motorleistung oder die Garantie?
+                        <i data-feather="chevron-down" class="text-[#0ED13D]"></i>
                     </div>
                     <div class="faq-answer max-h-0 overflow-hidden opacity-0 text-gray-500 font-medium leading-relaxed transition-all duration-300">
-                        Pro Fahrzeug wird ein Gerät benötigt, das direkt in den OBD2-Port gesteckt wird.
+                        Keineswegs. SynGas optimiert die Kraftstoffeinspritzung innerhalb der sicheren Werksgrenzen. Es handelt sich nicht um ein permanentes Chiptuning. Da das Gerät rückstandslos entfernbar ist, bleibt Ihre Fahrzeuggarantie unberührt.
                     </div>
                 </div>
 
-                <!-- Q3 -->
-                <div class="faq-item group bg-gray-50 rounded-3xl p-8 cursor-pointer hover:bg-gray-100 transition-all border border-gray-100" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center gap-6">
-                        <h4 class="text-xl font-bold text-gray-800 tracking-tight">Ist die Installation schwer?</h4>
-                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:bg-[#0ED13D] group-hover:text-white transition-all">
-                             <i data-feather="chevron-down" class="w-5 h-5"></i>
-                        </div>
+                <!-- Q3: Real World Savings -->
+                <div class="faq-item group bg-white rounded-3xl p-8 cursor-pointer hover:bg-gray-50 transition-all border border-gray-100 shadow-sm" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center gap-6 font-bold text-xl uppercase tracking-tight text-gray-800">
+                        Wie viel Kraftstoff kann ich wirklich sparen?
+                        <i data-feather="chevron-down" class="text-[#0ED13D]"></i>
                     </div>
                     <div class="faq-answer max-h-0 overflow-hidden opacity-0 text-gray-500 font-medium leading-relaxed transition-all duration-300">
-                        Überhaupt nicht. Es ist eine reine Plug-and-Play-Lösung. Sie brauchen kein Werkzeug und kein technisches Vorwissen.
+                        Ergebnisse zeigen eine Senkung des Verbrauchs um bis zu 55 %, abhängig vom Fahrzeugzustand und Fahrstil. Im Durchschnitt amortisiert sich die Investition bereits nach wenigen Tankfüllungen.
                     </div>
                 </div>
-                
-                <!-- Q4 -->
-                <div class="faq-item group bg-gray-50 rounded-3xl p-8 cursor-pointer hover:bg-gray-100 transition-all border border-gray-100" onclick="toggleFaq(this)">
-                    <div class="flex justify-between items-center gap-6">
-                        <h4 class="text-xl font-bold text-gray-800 tracking-tight">Ist die Bestellung sicher?</h4>
-                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm group-hover:bg-[#0ED13D] group-hover:text-white transition-all">
-                             <i data-feather="chevron-down" class="w-5 h-5"></i>
-                        </div>
+
+                <!-- Q4: Installation -->
+                <div class="faq-item group bg-white rounded-3xl p-8 cursor-pointer hover:bg-gray-50 transition-all border border-gray-100 shadow-sm" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center gap-6 font-bold text-xl uppercase tracking-tight text-gray-800">
+                        Benötige ich einen Mechaniker für die Installation?
+                        <i data-feather="chevron-down" class="text-[#0ED13D]"></i>
                     </div>
                     <div class="faq-answer max-h-0 overflow-hidden opacity-0 text-gray-500 font-medium leading-relaxed transition-all duration-300">
-                        Ja, wir bieten eine 100% risikofreie 30-Tage-Geld-zurück-Garantie an. Falls Sie nicht zufrieden sind, erhalten Sie den vollen Kaufpreis zurück.
+                        Nein, die Installation ist kinderleicht und dauert weniger als 2 Minuten. Sie stecken das Gerät einfach in den OBD2-Port Ihres Fahrzeugs. Es ist keine Softwareinstallation und kein Werkzeug erforderlich.
+                    </div>
+                </div>
+
+                <!-- Q5: Regulatory -->
+                <div class="faq-item group bg-white rounded-3xl p-8 cursor-pointer hover:bg-gray-50 transition-all border border-gray-100 shadow-sm" onclick="toggleFaq(this)">
+                    <div class="flex justify-between items-center gap-6 font-bold text-xl uppercase tracking-tight text-gray-800">
+                        Ist der Einsatz in der EU und Deutschland legal?
+                        <i data-feather="chevron-down" class="text-[#0ED13D]"></i>
+                    </div>
+                    <div class="faq-answer max-h-0 overflow-hidden opacity-0 text-gray-500 font-medium leading-relaxed transition-all duration-300">
+                        Ja, der Einsatz ist vollkommen legal. SynGas greift nicht in die Abgassteuerung ein, sondern optimiert lediglich die Verbrennungseffizienz. Wir bieten zudem eine 30-tägige Geld-zurück-Garantie.
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Final CTA Section -->
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-6 text-center max-w-4xl">
+             <h2 class="text-4xl md:text-5xl font-black text-black mb-8 tracking-tighter">Bereit für die Zukunft des Fahrens?</h2>
+             <p class="text-xl text-gray-500 mb-12">Sichern Sie sich heute Ihren <span class="text-black font-bold">75% Rabatt</span> und fangen Sie an Geld zu sparen.</p>
+             <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                 <a href="https://www.knownwalk.com/2JCZKZ1X/21C8X3JD/?uid=4539" class="btn-primary px-12 py-6 rounded-2xl font-black text-xl uppercase tracking-widest flex items-center justify-center">
+                    Jetzt Bestellen
+                 </a>
+                 <a href="https://www.knownwalk.com/2JCZKZ1X/21C8X3JD/" class="btn-secondary px-12 py-6 rounded-2xl font-black text-xl uppercase tracking-widest flex items-center justify-center">
+                    Mehr Erfahren
+                 </a>
+             </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="bg-[#000000] text-white py-24 border-t border-white/5">
+    <footer class="bg-black text-white py-24">
         <div class="container mx-auto px-6 max-w-6xl text-center">
+            <img src="images/logo.svg" alt="Logo" class="h-6 mx-auto mb-10 opacity-60">
             
-            <div class="mb-12">
-                <div class="flex flex-center justify-center gap-2 mb-8">
-                    <img src="images/favicon.png" alt="Logo" class="h-6 w-6">
-                    <span class="text-xl font-black tracking-tighter uppercase">SynGas Official</span>
-                </div>
-                <div class="flex flex-wrap justify-center gap-x-12 gap-y-4 text-[10px] font-black text-gray-500 uppercase tracking-widest">
-                    <a href="javascript:void(0)" onclick="openPolicy('privacy')" class="hover:text-[#0ED13D] transition-colors">Datenschutz</a>
-                    <a href="javascript:void(0)" onclick="openPolicy('terms')" class="hover:text-[#0ED13D] transition-colors">Bedingungen</a>
-                    <a href="javascript:void(0)" onclick="openPolicy('shipping')" class="hover:text-[#0ED13D] transition-colors">Cookies</a>
-                    <a href="mailto:support@get-syngas.com" class="hover:text-[#0ED13D] transition-colors">Kontakt</a>
-                </div>
+            <!-- Google Ads 2026 Compliance: Links & Transparency -->
+            <div class="flex flex-wrap justify-center gap-x-12 gap-y-4 text-[10px] font-black text-gray-500 uppercase tracking-widest mb-12">
+                <a href="javascript:void(0)" onclick="openPolicy('terms')" class="hover:text-[#0ED13D] transition-colors">Bedingungen</a>
+                <a href="javascript:void(0)" onclick="openPolicy('privacy')" class="hover:text-[#0ED13D] transition-colors">Datenschutz</a>
+                <a href="javascript:void(0)" onclick="openPolicy('shipping')" class="hover:text-[#0ED13D] transition-colors">Versandinfo</a>
+                <a href="javascript:void(0)" onclick="openPolicy('impressum')" class="hover:text-[#0ED13D] transition-colors underline decoration-[#0ED13D]/30">Impressum</a>
+                <a href="mailto:support@get-syngas.com" class="hover:text-[#0ED13D] transition-colors">Kontakt</a>
             </div>
 
-            <p class="text-[9px] text-gray-600 max-w-4xl mx-auto leading-relaxed mb-12 uppercase tracking-wide">
-                *DIESES PRODUKT DIENT NICHT DER DIAGNOSE, BEHANDLUNG ODER VORBEUGUNG EINES ZUSTANDES. ERGEBNISSE KÖNNEN JE NACH FAHRZEUGMODELL, ALTER UND FAHRSTIL VARIIEREN. DIE INFORMATIONEN AUF DIESER SEITE DIENEN NUR ZU INFORMATIONSZWECKEN.
+            <!-- Google Ads 2026 Compliance: Authorized Distributor Notice -->
+            <p class="text-[10px] text-gray-500 mb-8 tracking-widest uppercase font-bold">
+                Independent Authorized Distributor
             </p>
 
-            <div class="text-[10px] text-gray-700 font-bold mb-12 uppercase tracking-[0.3em]">
-                © 2026 SYNGAS AUTO LABS. ALLE RECHTE VORBEHALTEN.
-            </div>
-
-            <div class="flex justify-center items-center gap-8 opacity-20 filter grayscale">
-                <img src="https://img.icons8.com/color/48/visa.png" class="h-5" alt="Visa">
-                <img src="https://img.icons8.com/color/48/mastercard.png" class="h-5" alt="Mastercard">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/shield-security.png" class="h-5" alt="Secure">
-                <img src="https://img.icons8.com/ios-filled/50/ffffff/truck.png" class="h-5" alt="Shipping">
+            <!-- Corrected Automotive Disclaimer -->
+            <div class="max-w-4xl mx-auto border-t border-white/5 pt-10">
+                <p class="text-[9px] text-gray-700 leading-relaxed mb-6">
+                    *HAFTUNGSAUSSCHLUSS: DIE DARGESTELLTEN ERGEBNISSE UND KRAFTSTOFFEINSPARUNGEN KÖNNEN JE NACH FAHRZEUGZUSTAND, ALTER, MODELL UND INDIVIDUELLEM FAHRSTIL VARIIEREN. DIESES GERÄT DIENT DER OPTIMIERUNG DER BESTEHENDEN MOTORPARAMETER INNERHALB DER VOM HERSTELLER VORGEGEBENEN GRENZWERTE.
+                </p>
+                <div class="text-[10px] text-gray-800 font-bold uppercase tracking-[0.3em]">
+                    © 2026 SYNGAS AUTO LABS. ALLE RECHTE VORBEHALTEN.
+                </div>
             </div>
         </div>
     </footer>
 
     <!-- Policy Modal -->
-    <div id="policy-modal" class="fixed inset-0 z-[200] hidden" role="dialog" aria-modal="true">
+    <div id="policy-modal" class="fixed inset-0 z-[400] hidden" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-black/80 backdrop-blur-md" onclick="closePolicy()"></div>
         <div class="fixed inset-0 z-10 overflow-y-auto">
             <div class="flex min-h-full items-center justify-center p-6">
-                <div class="relative bg-white text-black rounded-[3rem] shadow-2xl max-w-2xl w-full max-h-[80vh] flex flex-col text-left overflow-hidden">
-                    <div class="p-10 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
-                        <div class="flex flex-col">
-                            <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-1">Information</span>
-                            <h3 class="font-black text-2xl text-black tracking-tight" id="modal-title">Rechtliche Hinweise</h3>
-                        </div>
-                        <button onclick="closePolicy()" class="w-12 h-12 bg-white border border-gray-100 rounded-full flex items-center justify-center hover:bg-[#0ED13D] hover:text-white transition-all shadow-sm">
-                            <i data-feather="x" class="w-6 h-6"></i>
+                <div class="relative bg-white text-black rounded-[3rem] shadow-2xl max-w-3xl w-full max-h-[85vh] flex flex-col text-left overflow-hidden">
+                    <div class="p-10 border-b border-gray-100 flex justify-between items-center">
+                        <h3 class="font-black text-2xl uppercase tracking-tighter" id="modal-title">Rechtliches</h3>
+                        <button onclick="closePolicy()" class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center hover:bg-red-50 hover:text-red-500 transition-all">
+                            <i data-feather="x"></i>
                         </button>
                     </div>
-                    <div class="p-12 overflow-y-auto text-sm text-gray-500 leading-relaxed space-y-6 font-medium" id="modal-content">
-                        <!-- Content -->
+                    <div class="p-10 overflow-y-auto legal-content" id="modal-content">
+                        <!-- Content Injected -->
                     </div>
                 </div>
             </div>
@@ -406,18 +414,22 @@
         feather.replace();
 
         const policies = {
-            privacy: `<h2>DATENSCHUTZRICHTLINIE</h2><p>Wir nehmen den Schutz Ihrer Daten sehr ernst. Personenbezogene Informationen werden nur im notwendigen Rahmen für die Bestellabwicklung und Verbesserung unserer Dienste erhoben.</p><p>Alle Daten werden nach modernsten Sicherheitsstandards verschlüsselt und nicht an unbefugte Dritte weitergegeben.</p>`,
-            terms: `<h2>NUTZUNGSBEDINGUNGEN</h2><p>Durch die Bestellung von SynGas akzeptieren Sie unsere allgemeinen Geschäftsbedingungen. Das Produkt ist für den legalen Einsatz in OBD2-Ports vorgesehen.</p><h3>Garantie</h3><p>Wir bieten eine 30-tägige Zufriedenheitsgarantie ab Erhalt der Ware.</p>`,
-            shipping: `<h2>COOKIES</h2><p>Unsere Seite nutzt Cookies für die Analyse des Datenverkehrs und zur Personalisierung Ihrer Erfahrung. Dies dient der Einhaltung von Werberichtlinien gemäß Google Ads 2026 Standards (GTAG).</p>`
+            terms: `<h2>Allgemeine Geschäftsbedingungen</h2><p>Willkommen bei SynGas. Diese Bedingungen regeln Ihre Nutzung unserer Website und den Kauf unserer Produkte. Durch den Zugriff auf unsere Website erklären Sie sich mit diesen Bedingungen einverstanden.</p><h3>Vertragsabschluss</h3><p>Die Darstellung der Produkte im Online-Shop stellt kein rechtlich bindendes Angebot, sondern einen unverbindlichen Online-Katalog dar.</p><h3>Widerrufsrecht</h3><p>Sie haben das Recht, binnen 30 Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Die Widerrufsfrist beträgt 14 Tage ab dem Tag, an dem Sie die Waren in Besitz genommen haben.</p>`,
+            privacy: `<h2>Datenschutz & Cookies</h2><p>Wir verpflichten uns, Ihre Privatsphäre zu schützen. Diese Datenschutzrichtlinie erklärt, wie wir Ihre persönlichen Daten gemäß DSGVO und Google Ads Compliance 2026 sammeln und verwenden.</p><h3>Erhebung von Daten</h3><p>Wir sammeln Informationen, wenn Sie unsere Website besuchen oder eine Bestellung aufgeben. Dies umfasst Name, E-Mail-Adresse und IP-Adresse für Sicherheitszwecke.</p><h3>Tracking</h3><p>Wir nutzen Analyse-Tools, um die Nutzererfahrung zu verbessern. Alle Daten werden anonymisiert verarbeitet.</p>`,
+            shipping: `<h2>Versand & Lieferung</h2><p>Wir bemühen uns, Ihre Bestellung so schnell wie möglich zu bearbeiten. Die Bearbeitungszeit beträgt 1-3 Werktage. Die Lieferzeit nach Deutschland beträgt durchschnittlich 5-12 Werktage.</p><h3>Sendungsverfolgung</h3><p>Sobald Ihr Paket versandt wurde, erhalten Sie eine Tracking-ID per E-Mail.</p>`,
+            impressum: `<h2>Impressum</h2><p>Angaben gemäß § 5 TMG:</p><h3>Kontakt</h3><p>SynGas Auto Labs<br>E-Mail: support@get-syngas.com<br>Web: www.get-syngas.com</p><h3>Verantwortlich für den Inhalt</h3><p>Authorized Sales Agent<br>UAB CommerceCore<br>Gedimino pr. 24, Vilnius<br>Litauen</p><h3>Datenschutzbeantwortlich</h3><p>Privacy Team - support@get-syngas.com</p>`
         };
 
         function openPolicy(type) {
-            const modal = document.getElementById('policy-modal');
-            const content = document.getElementById('modal-content');
-            const title = document.getElementById('modal-title');
-            content.innerHTML = policies[type];
-            title.innerText = type === 'privacy' ? 'Datenschutzrichtlinie' : (type === 'terms' ? 'Allgemeine Geschäftsbedingungen' : 'Cookie-Richtlinie');
-            modal.classList.remove('hidden');
+            document.getElementById('modal-content').innerHTML = policies[type];
+            const titles = {
+                terms: 'Bedingungen',
+                privacy: 'Datenschutz',
+                shipping: 'Versandinfo',
+                impressum: 'Impressum'
+            };
+            document.getElementById('modal-title').innerText = titles[type];
+            document.getElementById('policy-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
             feather.replace();
         }
@@ -429,12 +441,21 @@
 
         function toggleFaq(el) {
             const isActive = el.classList.contains('active');
-            document.querySelectorAll('.faq-item').forEach(item => {
-                item.classList.remove('active');
-            });
+            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
             if (!isActive) el.classList.add('active');
             feather.replace();
         }
+
+        function acceptCookies() {
+            document.getElementById('cookie-banner').classList.add('hidden');
+            localStorage.setItem('cookiesAccepted', 'true');
+        }
+
+        window.onload = () => {
+            if (localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookie-banner').classList.add('hidden');
+            }
+        };
 
         function reveal() {
             document.querySelectorAll(".reveal").forEach(el => {
@@ -442,7 +463,6 @@
             });
         }
         window.addEventListener("scroll", reveal);
-        window.addEventListener("load", reveal);
         reveal();
     </script>
 </body>
